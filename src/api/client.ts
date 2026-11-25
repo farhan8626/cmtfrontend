@@ -5,8 +5,10 @@
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
+// In production (Vercel), VITE_API_URL is set to the MonsterASP backend URL.
+// In development (local), falls back to relative /api which Vite proxies to localhost:5000.
 const client = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.VITE_API_URL ?? '/api',
   headers: { 'Content-Type': 'application/json' },
 })
 
